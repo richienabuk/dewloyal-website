@@ -11,29 +11,47 @@
     <meta property="og:image" content="logo.png" />
     <meta property="og:url" content="https://dewloyal.com" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3 {
             font-family: 'K2D', sans-serif;
         }
     </style>
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
     <header class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/">
-            <img src="sitebrand-light.svg" alt="DewLoyal" class="h-10">
+            <img src="sitebrand-light.svg" alt="DewLoyal" class="h-10 hidden dark:inline">
+            <img src="sitebrand.svg" alt="DewLoyal" class="h-10 dark:hidden">
         </a>
         <nav class="hidden md:flex items-center space-x-8">
-            <a href="#features" class="hover:text-gray-300">Features</a>
-            <a href="#pricing" class="hover:text-gray-300">Pricing</a>
-            <a href="mailto:support@dewloyal.com" class="hover:text-gray-300">Contact</a>
+            <a href="#features" class="hover:text-gray-600 dark:hover:text-gray-300">Features</a>
+            <a href="mailto:support@dewloyal.com" class="hover:text-gray-600 dark:hover:text-gray-300">Contact</a>
         </nav>
-        <a href="https://account.dewloyal.com" target="_blank" class="bg-lime-400 text-gray-900 font-bold py-2 px-6 rounded-full hover:bg-lime-500">
-            Try for Free
-        </a>
+        <div class="flex items-center">
+            <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 14.364a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+            <a href="https://account.dewloyal.com" target="_blank" class="bg-lime-400 text-gray-900 font-bold py-2 px-6 rounded-full hover:bg-lime-500 ml-4">
+                Try for Free
+            </a>
+        </div>
     </header>
 
     <main>
@@ -41,7 +59,7 @@
             <h1 class="text-5xl md:text-7xl font-bold leading-tight">
                 Reward Your Customers, <br> Anywhere in Africa
             </h1>
-            <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            <p class="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Effortlessly send payouts and rewards like airtime and bank transfers to your customers in Nigeria, Ghana, South Africa, and beyond.
             </p>
             <div class="mt-10">
@@ -59,29 +77,29 @@
                         <svg class="w-16 h-16 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Multiple Reward Options</h3>
-                    <p class="text-gray-400">Send rewards as airtime, direct bank transfers, and more. We're constantly adding new payout options to serve your needs.</p>
+                    <p class="text-gray-600 dark:text-gray-400">Send rewards as airtime, direct bank transfers, and more. We're constantly adding new payout options to serve your needs.</p>
                 </div>
                 <div class="text-center">
                     <div class="flex justify-center mb-6">
                         <svg class="w-16 h-16 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.737 16.026L7.05 16.95A2 2 0 015.586 18H5a2 2 0 01-2-2v-1a2 2 0 012-2h2.05a2 2 0 011.95.684l.705.939a2 2 0 002.586 0l.705-.939A2 2 0 0116.95 13H19a2 2 0 012 2v1a2 2 0 01-2 2h-.586a2 2 0 01-1.414-.586l-.687-.687M12 11v- partículas"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Wide African Coverage</h3>
-                    <p class="text-gray-400">We're focused on Africa. Currently serving Nigeria, Ghana, and South Africa, with more countries on the way.</p>
+                    <p class="text-gray-600 dark:text-gray-400">We're focused on Africa. Currently serving Nigeria, Ghana, and South Africa, with more countries on the way.</p>
                 </div>
                 <div class="text-center">
                     <div class="flex justify-center mb-6">
                         <svg class="w-16 h-16 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Simple & Fast API</h3>
-                    <p class="text-gray-400">Integrate with our developer-friendly API to automate your reward and payout processes.</p>
+                    <p class="text-gray-600 dark:text-gray-400">Integrate with our developer-friendly API to automate your reward and payout processes.</p>
                 </div>
             </div>
         </section>
 
-        <section class="bg-gray-800 py-20">
+        <section class="bg-gray-100 dark:bg-gray-800 py-20">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl font-bold mb-4">What is DewLoyal?</h2>
-                <p class="text-gray-400 max-w-3xl mx-auto text-lg">
+                <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg">
                     DewLoyal is a powerful platform for businesses to send rewards and payouts to their customers across Africa. Whether you're a research company rewarding participants, a business running a loyalty program, or an organization disbursing funds, DewLoyal makes it simple, fast, and reliable.
                 </p>
             </div>
@@ -94,21 +112,21 @@
                     <div class="bg-lime-400 text-gray-900 rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl">1</div>
                     <div>
                         <h3 class="text-2xl font-bold">Sign Up</h3>
-                        <p class="text-gray-400">Create your free DewLoyal account.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Create your free DewLoyal account.</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6 mb-12 md:mb-0">
                     <div class="bg-lime-400 text-gray-900 rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl">2</div>
                     <div>
                         <h3 class="text-2xl font-bold">Fund Your Account</h3>
-                        <p class="text-gray-400">Add funds to your wallet.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Add funds to your wallet.</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
                     <div class="bg-lime-400 text-gray-900 rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl">3</div>
                     <div>
                         <h3 class="text-2xl font-bold">Send Rewards</h3>
-                        <p class="text-gray-400">Start sending rewards instantly.</p>
+                        <p class="text-gray-600 dark:text-gray-400">Start sending rewards instantly.</p>
                     </div>
                 </div>
             </div>
@@ -120,31 +138,31 @@
                 <p class="max-w-xl mx-auto mb-10 text-lg">
                     Create an account and start sending rewards in minutes.
                 </p>
-                <a href="https://account.dewloyal.com" target="_blank" class="bg-gray-900 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-800 transition-colors">
+                <a href="https://account.dewloyal.com" target="_blank" class="bg-gray-900 text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors">
                     Create Your Free Account
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800">
+    <footer class="bg-gray-100 dark:bg-gray-800">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
                     <a href="/">
-                        <img src="sitebrand-light.svg" alt="DewLoyal" class="h-8">
+                        <img src="sitebrand-light.svg" alt="DewLoyal" class="h-8 hidden dark:block">
+                        <img src="sitebrand.svg" alt="DewLoyal" class="h-8 block dark:hidden">
                     </a>
                 </div>
                 <div class="flex space-x-8">
-                    <a href="#features" class="hover:text-gray-300">Features</a>
-                    <a href="mailto:support@dewloyal.com" class="hover:text-gray-300">Support</a>
-                    <a href="https://account.dewloyal.com" target="_blank" class="hover:text-gray-300">Login</a>
+                    <a href="#features" class="hover:text-gray-600 dark:hover:text-gray-300">Features</a>
+                    <a href="mailto:support@dewloyal.com" class="hover:text-gray-600 dark:hover:text-gray-300">Support</a>
+                    <a href="https://account.dewloyal.com" target="_blank" class="hover:text-gray-600 dark:hover:text-gray-300">Login</a>
                 </div>
             </div>
-            <div class="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500">
+            <div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-4 text-center text-gray-500 dark:text-gray-400">
                 &copy; 2024 DewLoyal. All rights reserved.
             </div>
         </div>
     </footer>
-</body>
 </html>
